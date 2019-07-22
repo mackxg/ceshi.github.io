@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>财神</title>
+  <meta name="description" content="">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script> -->
+
+</head>
+
+<body>
+  <div id="lt_1"></div>
+</body>
+<script type="text/javascript">
+
+         var oDiv = document.getElementById('lt_1');
+         function GetTime(time,abc) {
+           var a = true;
+           function double(num) {
+               if (num < 10) {
+                   return "0" + num;
+               } else {
+                   return "" + num;
+               }
+           }
+           function goTime() {
+               var t = new Date(time).getTime() - new Date().getTime(),
+                   d = Math.floor(t / 1000 / 60 / 60 / 24),
+                   h = Math.floor(t / 1000 / 60 / 60 % 24),
+                   m = Math.floor(t / 1000 / 60 % 60),
+                   s = Math.floor(t / 1000 % 60);
+                   console.log(t)
+               if ( t < 900000) {
+                  abc.innerHTML = double(h)+':'+double(m)+':'+double(s);
+               }
+               if( t < 1){
+                 clearInterval(timer)
+                 abc.innerHTML = '倒计时结束';
+               }
+           }
+           goTime();
+           var timer = setInterval(goTime, 1000);
+       }
+       var time1 = new GetTime("2019-07-23 02:15:00",oDiv);
+       // var time2 = new GetTime("2019-07-21 17:33:00",oDiv1);
+
+</script>
+</html>
