@@ -15,6 +15,14 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js" ></script>
 <script type="text/javascript" src="clipboard.min.js"></script>
 <script type="text/javascript">
-  new ClipboardJS('.btn')
+  var clipboard = new ClipboardJS('.btn');
+  clipboard.on('success', function(e) {
+    alert('复制成功');
+
+  });
+  clipboard.on('error', function(e) {
+     alert('复制失败');
+  });
+
 </script>
 </html>
