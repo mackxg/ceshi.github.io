@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>截屏功能</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+  </head>
+  <body>
+      <div>
+        <p>图片介绍</p>
+        <img src="login_bj.png" alt="" style="width:120px;"/>
+      </div>
+      <input class="example1" type="button" value="button">
+  </body>
+  <script  type="text/javascript" >
+    $(document).ready( function(){
+            $(".example1").on("click", function(event) {
+                    event.preventDefault();
+                    html2canvas(document.body, {
+                    allowTaint: true,
+                    taintTest: false,
+                    onrendered: function(canvas) {
+                        canvas.id = "mycanvas";
+                        //document.body.appendChild(canvas);
+                        //生成base64图片数据
+                        var dataUrl = canvas.toDataURL();
+                        var newImg = document.createElement("img");
+                        newImg.src =  dataUrl;
+                        document.body.appendChild(newImg);
+                    }
+                });
+            });
+
+    });
+</script>
+</html>
