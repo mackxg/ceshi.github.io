@@ -28,7 +28,8 @@
                         var newImg = document.createElement("img");
                         newImg.src =  dataUrl;
                         document.body.appendChild(newImg);
-                        newImg.download = newImg.src
+                        //newImg.download = newImg.src
+                        newImg.attr('download',newImg.src+'png')
                     }
                 });
             });
