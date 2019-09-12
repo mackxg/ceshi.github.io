@@ -5,34 +5,62 @@
     <title>截屏功能</title>
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <style type="text/css">
+    #box{
+      width: 400px;
+      height: 300px;
+      border: 4px solid yellowgreen;
+      color: deeppink;
+      text-align: center;
+      line-height: 300px;
+      font-size: 50px;
+    }
+    button{
+      width: 200px;
+      height: 50px;
+      font-size: 20px;
+    }
+    #imgContent{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0,0,0,0.4);
+      display: none;
+    }
+    </style>
   </head>
   <body>
-      <div>
-        <p>图片介绍</p>
-        <img src="login_bj.png" alt="" style="width:120px;"/>
-      </div>
-      <input class="example1" type="button" value="button">
+    <div id="box">
+      截屏效果测试
+    </div>
+
+<button id="btn1">点击截图</button>
+<div id="imgContent"></div>
   </body>
   <script  type="text/javascript" >
-    $(document).ready( function(){
-            $(".example1").on("click", function(event) {
-                    event.preventDefault();
-                    html2canvas(document.body, {
-                    allowTaint: true,
-                    taintTest: false,
-                    onrendered: function(canvas) {
-                        canvas.id = "mycanvas";
-                        //document.body.appendChild(canvas);
-                        //生成base64图片数据
-                        var dataUrl = canvas.toDataURL();
-                        var newImg = document.createElement("img");
-                        newImg.src =  dataUrl;
-                        document.body.appendChild(newImg);
-                        //newImg.download = newImg.src
-                        newImg.setAttribute('download',newImg.src+'png')
-                    }
-                });
+    $("#btn1").on("click",function(){
+      $("#imgContent").show(); /*装图片的盒子显示出来*/
+      $("#imgContent").css({"height":$("body").outerHeight()});/*装图片的盒子高度出来*/
+      html2canvas( $("#box") ,{ //box为要截屏的dom元素
+          onrendered: function(canvas){
+            var url = canvas.toDataURL(); /*获得的图片路径，base64*/
+            $("#imgContent").html(' <a href=""><img src="'+ url +'" /></a>');
+
+            /*避免事件重复绑定*/
+            $("#imgContent").off("click","img");
+
+            $("#imgContent").on("click","img",function (event) {
+            /*点击下载功能*/
+              $("#imgContent").find("a").attr( 'href' ,url) ;
+              $("#imgContent").find("a").attr( 'download' , 'caibao.png' ) ;
             });
+        }
+      });
     });
+    /*隐藏弹出层*/
+    $("#imgContent").on("click",function(){
+    $(this).hide();
 </script>
 </html>
