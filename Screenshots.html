@@ -35,32 +35,31 @@
     <div id="box">
       截屏效果测试
     </div>
-
-<button id="btn1">点击截图</button>
-<div id="imgContent"></div>
+    <button id="btn1">点击截图</button>
+    <div id="imgContent"></div>
   </body>
   <script  type="text/javascript" >
     $("#btn1").on("click",function(){
-      $("#imgContent").show(); /*装图片的盒子显示出来*/
-      $("#imgContent").css({"height":$("body").outerHeight()});/*装图片的盒子高度出来*/
-      html2canvas( $("#box") ,{ //box为要截屏的dom元素
-          onrendered: function(canvas){
-            var url = canvas.toDataURL(); /*获得的图片路径，base64*/
-            $("#imgContent").html(' <a href=""><img src="'+ url +'" /></a>');
+        $("#imgContent").show(); /*装图片的盒子显示出来*/
+        $("#imgContent").css({"height":$("body").outerHeight()});/*装图片的盒子高度出来*/
+        html2canvas( $("#box") ,{ //box为要截屏的dom元素
+            onrendered: function(canvas){
+              var url = canvas.toDataURL(); /*获得的图片路径，base64*/
+              $("#imgContent").html(' <a href=""><img src="'+ url +'" /></a>');
 
-            /*避免事件重复绑定*/
-            $("#imgContent").off("click","img");
+              /*避免事件重复绑定*/
+              $("#imgContent").off("click","img");
 
-            $("#imgContent").on("click","img",function (event) {
-            /*点击下载功能*/
-              $("#imgContent").find("a").attr( 'href' ,url) ;
-              $("#imgContent").find("a").attr( 'download' , 'caibao.png' ) ;
-            });
-        }
-      });
+              $("#imgContent").on("click","img",function (event) {
+              /*点击下载功能*/
+                $("#imgContent").find("a").attr( 'href' ,url) ;
+                $("#imgContent").find("a").attr( 'download' , 'caibao.png' ) ;
+              });
+          }
+        });
     });
     /*隐藏弹出层*/
     $("#imgContent").on("click",function(){
     $(this).hide();
-</script>
+  </script>
 </html>
