@@ -29,7 +29,7 @@
                         newImg.src =  dataUrl;
                         document.body.appendChild(newImg);
                         //newImg.download = newImg.src
-                        newImg.attr('download',newImg.src+'png')
+                        newImg.setAttribute('download',newImg.src+'png')
                     }
                 });
             });
