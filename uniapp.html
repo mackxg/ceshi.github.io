@@ -13,6 +13,7 @@
 		document.addEventListener('UniAppJSBridgeReady', function() {  
 		    document.querySelector('.btn-list').addEventListener('click', function(evt) {  
 		        var target = evt.target;  
+				console.log(target)
 		        if (target.tagName === 'BUTTON') {  
 		            var action = target.getAttribute('data-action');  
 		            if(action === 'navigateTo') {  
