@@ -13,9 +13,10 @@
 		document.addEventListener('UniAppJSBridgeReady', function() {  
 		    document.querySelector('.btn-list').addEventListener('click', function(evt) {  
 		        var target = evt.target;  
-				console.log(target)
+				console.log(target.tagName)
 		        if (target.tagName === 'BUTTON') {  
 		            var action = target.getAttribute('data-action');  
+					console.log(action)
 		            if(action === 'navigateTo') {  
 		                uni.navigateTo({  
 		                    url: '/pages/button/button'  
