@@ -3,23 +3,24 @@
 	<head>
 		<meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>uniapp传递参数</title>
+		<title>h5地址的首页</title>
 	</head>
 	<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script>
 	<body>
-		<button type="button" data-action="navigateTo" class="btn-list" style="margin-top:100px;margin-left:50px">跳转到uniapp应用内的操作</button>
+		<p>这个是h5地址的商城首页，点击下面这个按钮购买跳转到应用内的pay.vue文件</p>
+		<button type="button" data-action="navigateTo" class="btn-list" style="margin-top:100px;margin-left:50px">购买</button>
 	</body>
 	<script type="text/javascript">
 		document.addEventListener('UniAppJSBridgeReady', function() {  
 		    document.querySelector('.btn-list').addEventListener('click', function(evt) {  
 		        var target = evt.target;  
-				console.log(target.tagName)
+				//console.log(target.tagName)
 		        if (target.tagName === 'BUTTON') {  
 		            var action = target.getAttribute('data-action');  
-					console.log(action)
+					//console.log(action)
 		            if(action === 'navigateTo') {  
 		                uni.navigateTo({  
-		                    url: '/pages/button/button?indent=12j1lj312j3lj332j2lj&cash=100.40'  
+		                    url: '/pages/pay/pay'  
 		                });  
 		            }  
 		        }  
