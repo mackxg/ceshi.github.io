@@ -9,8 +9,8 @@
 	<body>
 		<p>这个是h5地址的商城首页，点击下面这个按钮购买跳转到应用内的pay.vue文件</p>
 		<button type="button" data-action="navigateTo" class="btn-list" style="margin-top:100px;margin-left:50px">购买</button>
-		<button type="button" data-action="navigateTo" class="btn-list" style="margin-top:100px;margin-left:50px">购买</button>
-		<button type="button" data-action="navigateTo" class="btn-list" style="margin-top:100px;margin-left:50px">购买</button>
+		<button type="button" data-action="navigateTo" class="btn-list1" style="margin-top:100px;margin-left:50px">购买</button>
+		<button type="button" data-action="navigateTo" class="btn-list2" style="margin-top:100px;margin-left:50px">购买</button>
 	</body>
 	<script type="text/javascript">
 		document.addEventListener('UniAppJSBridgeReady', function() {  
@@ -27,6 +27,32 @@
 		            }  
 		        }  
 		    });  
+			document.querySelector('.btn-list1').addEventListener('click', function(evt) {
+			    var target = evt.target;  
+				//console.log(target.tagName)
+			    if (target.tagName === 'BUTTON') {  
+			        var action = target.getAttribute('data-action');  
+					//console.log(action)
+			        if(action === 'navigateTo') {  
+			            uni.navigateTo({  
+			                url: '/pages/pay/pay'  
+			            });  
+			        }  
+			    }  
+			});  
+			document.querySelector('.btn-list2').addEventListener('click', function(evt) {
+			    var target = evt.target;  
+				//console.log(target.tagName)
+			    if (target.tagName === 'BUTTON') {  
+			        var action = target.getAttribute('data-action');  
+					//console.log(action)
+			        if(action === 'navigateTo') {  
+			            uni.navigateTo({  
+			                url: '/pages/pay/pay'  
+			            });  
+			        }  
+			    }  
+			});  
 		});
 	</script>
 </html>
