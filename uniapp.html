@@ -5,6 +5,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>h5地址的首页</title>
 	</head>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script>
 	<body>
 		<p>这个是h5地址的商城首页，点击下面这个按钮购买跳转到应用内的pay.vue文件</p>
@@ -13,6 +14,9 @@
 		<button type="button" data-action="navigateTo" class="btn-list2" style="margin-top:100px;margin-left:50px">购买</button>
 	</body>
 	<script type="text/javascript">
+		$('.btn-list').on('click',function(){
+			alert('1')
+		})
 		document.addEventListener('UniAppJSBridgeReady', function() {  
 		    document.querySelector('.btn-list').addEventListener('click', function(evt) {  
 		        var target = evt.target;  
