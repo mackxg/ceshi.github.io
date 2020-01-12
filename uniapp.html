@@ -5,13 +5,27 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>h5地址的首页</title>
 	</head>
-	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	
 	<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script>
+	
 	<body>
-		<p>这个是h5地址的登录地址，操作到购买那一步，点击下面这个按钮购买按钮(如下边的button按钮)跳转到应用内的pay.vue文件</p>
-		<button type="button" data-action="navigateTo" class="btn-list" style="margin-top:100px;margin-left:50px">购买</button>
-
+		<div id="app">
+			<p>这个是h5地址的登录地址，操作到购买那一步，点击下面这个按钮购买按钮(如下边的button按钮)跳转到应用内的pay.vue文件</p>
+			
+			<button type="button" data-action="navigateTo" class="btn-list">购买</button>
+		</div>
 	</body>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.10/vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data:{
+				id:'17'
+			},
+			mounted() {
+			}
+		})
+	</script>
 	<script type="text/javascript">
 		document.addEventListener('UniAppJSBridgeReady', function() {  
 		    document.querySelector('.btn-list').addEventListener('click', function(evt) {  
@@ -27,6 +41,6 @@
 		            }  
 		        }  
 		    });  
-		});
+		});	
 	</script>
 </html>
